@@ -41,3 +41,9 @@ out/
 
 ### Git SubModule ###
 aethalides/**
+
+### Environment ###
+.env
+
+### Test ###
+workspace/**
