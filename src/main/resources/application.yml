@@ -1,0 +1,4 @@
+aws:
+  s3:
+    accessKey: ${AWS_S3_ACCESS_KEY}
+    secretKey: ${AWS_S3_SECRET_KEY}
