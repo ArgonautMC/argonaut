@@ -38,3 +38,12 @@ out/
 
 ### Kotlin ###
 .kotlin
+
+### Git SubModule ###
+aethalides/**
+
+### Environment ###
+.env
+
+### Test ###
+workspace/**

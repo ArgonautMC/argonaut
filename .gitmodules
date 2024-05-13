@@ -1,0 +1,3 @@
+[submodule "aethalides"]
+	path = aethalides
+	url = https://github.com/ArgonautMC/aethalides
