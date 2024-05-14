@@ -56,6 +56,10 @@ tasks {
         }
     }
 
+    jar {
+        enabled = false
+    }
+
     sourceSets{
         main {
             proto {
