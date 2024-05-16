@@ -8,7 +8,6 @@ import aws.sdk.kotlin.services.s3.model.PutObjectRequest
 import aws.smithy.kotlin.runtime.content.ByteStream
 import aws.smithy.kotlin.runtime.content.asByteStream
 import aws.smithy.kotlin.runtime.content.toByteArray
-import kotlinx.coroutines.runBlocking
 import kr.argonaut.argonaut.lib.getLogger
 import org.springframework.stereotype.Service
 import java.io.File
@@ -37,10 +36,8 @@ class S3Service(
         }
 
         logger.trace("s3/get --bucket $bucket --key $key")
-        return runBlocking {
-            s3Client.getObject(request) { response ->
-                requireNotNull(response.body).toByteArray()
-            }
+        return s3Client.getObject(request) { response ->
+            requireNotNull(response.body).toByteArray()
         }
     }
 
