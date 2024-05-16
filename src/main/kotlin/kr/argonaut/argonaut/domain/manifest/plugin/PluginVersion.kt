@@ -1,27 +1,15 @@
 package kr.argonaut.argonaut.domain.manifest.plugin
 
-import kr.argonaut.argonaut.domain.manifest.spigot.SpigotVersion
+abstract class PluginVersion(
+    private val version: String
+){
+    final override fun toString(): String = version
 
-data class PluginVersion(
-    val major: Int,
-    val minor: Int,
-    val patch: String,
-) {
-    override fun toString(): String {
-        return "$major.$minor.$patch"
-    }
     companion object {
-        fun fromString(version: String): PluginVersion {
-            try {
-                val parts = version.split('.')
-                return PluginVersion(
-                    major = parts[0].toInt(),
-                    minor = parts[1].toInt(),
-                    patch = parts[2]
-                )
-            } catch (throwable: Throwable) {
-                throw IllegalArgumentException("Malformed version: $version", throwable)
-            }
-        }
+        fun fromString(version: String): PluginVersion =
+            PluginVersionType.entries
+                .find { it.typeChecker(version) }
+                ?.let { it.versionResolver(version) }
+                ?: throw IllegalArgumentException("malformed version - $version")
     }
 }
