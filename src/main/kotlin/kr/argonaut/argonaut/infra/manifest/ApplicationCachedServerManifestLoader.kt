@@ -15,3 +15,6 @@ class ApplicationCachedServerManifestLoader(
         return manifest
     }
 }
+
+fun <T: ServerManifestLoader> T.withApplicationCached(): ServerManifestLoader =
+    ApplicationCachedServerManifestLoader(this)
